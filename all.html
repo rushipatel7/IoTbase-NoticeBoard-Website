@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notice Message</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="ProductSans,Product Sans,product sans,productsans,google font,gfont,google font framework">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google%20Sans">
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" href="(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2">
+        <link rel="icon" type="image/png" href="favicon.ico">
+    </head>
+    <body background-image="bg.jpeg">
+        <div class="container">
+         
+            <div class="wrap-login100" style="text-align: center;display: inline-block">
+                <div class="msg">
+                    <h1 style="font-family:Google Sans ,sans-serif;">Web Controlled Display Board</h1>
+                </div>
+                <br>
+                <div class="message">
+                    <form enctype="multipart/form-data" method="POST" id="sendmsg">
+                        <table>
+                               
+                            <div id="mg">
+                              <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                <input class="input100" type="text" name="msg" placeholder="Message" id="text" style="font-family: Google Sans,sans-serif;">
+                                <span class="focus-input100"></span>
+                                <span class="symbol-input100">
+                                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                                </span>
+                              </div>
+                             
+                                    
+                            <div>
+                            <input class="login100-form-btn" type="button" id="btn" value="submit" onclick="SubmitClick(); submsg(); SelectRedirect(); location.href='mailto:parth.chavda.129@gmail.com,pratikjain6720@gmail.com,?subject= Notice Alert &body='+document.getElementById('text').value;" style="font-family:Google Sans,sans-serif;">
+                            <!--<button class="login100-form-btn" value="submit" id="submit" onclick="save_data()">submit</button> -->
+                            </div>
+                            </div> <br><br><br><br><br>
+                            <!--
+                            <div id="select-dep">
+                                <h3 style="font-family: Google Sans, sans-serif ;">Select Department To Send Message</h3> <br>
+                                
+                                <select class="input100" id="s1" name="selection" style="font-family:Google Sans, sans-serif ;" onchange="SelectRedirect();">
+                                   
+                                    <option value=""  style="border-radius: 25px;" disabled selected>Select Department</option>
+                                    <option value="CE" style="border-radius: 25px;">CE</option>
+                                    <option value="IT" style="border-radius: 25px;">IT</option>
+                                    <option value="EC" style="border-radius: 25px;">EC</option>
+                                    <option value="ME" style="border-radius: 25px;">ME</option>
+                                    <option value="CIVIL" style="border-radius: 25px;">CIVIL</option>
+                                    <option value="EE" style="border-radius: 25px;">EE</option>
+                                    <option value="ALL" style="border-radius: 25px;">ALL</option>
+                                </select>
+                             </div> 
+                            -->  
+                        </table>
+                    </form>
+                    <script>
+                         function send_mail() {
+                        window.open('mailto:parth.chavda.129@gmail.com,pratikjain6720@gmail.com,?subject= Notice Alert &body='+document.getElementById('text').value);
+                      }
+                        function SelectRedirect() {
+                          alert("You Selected " +document.getElementById('btn').value + " Department to send Notice");
+                
+                            switch(document.getElementById('btn').value){
+
+                                default:
+                                location.href="#mg";
+                                window.open('mailto:cedept2018@googlegroups.com,itdept2018@googlegroups.com,ecdept2018@googlegroups.com,medept2018@googlegroups.com,civildept2018@googlegroups.com,ecdept2018@googlegroups.com,?subject= Notice Alert &body='+document.getElementById('text').value);
+                                break;
+                            }
+                        }
+                        </script>
+	          <script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCiItEeR9vFKV9XPzWZuoPX85uHE6VJg7Y",
+    authDomain: "testing-1-e8ff1.firebaseapp.com",
+    databaseURL: "https://testing-1-e8ff1.firebaseio.com",
+    projectId: "testing-1-e8ff1",
+    storageBucket: "testing-1-e8ff1.appspot.com",
+    messagingSenderId: "712234393564"
+  };
+  var config = {
+    apiKey: "AIzaSyAn20a43i0gpWgqjbqlAwdcyHlTGYILR8c",
+    authDomain: "iotbasenoticeboard.firebaseapp.com",
+    databaseURL: "https://iotbasenoticeboard.firebaseio.com",
+    projectId: "iotbasenoticeboard",
+    storageBucket: "iotbasenoticeboard.appspot.com",
+    messagingSenderId: "635009220081"
+  };
+  firebase.initializeApp(config);
+  console.log(firebase);
+  
+  var text = document.getElementById('text');
+  var submitBtn = document.getElementById('btn');
+  
+  //submit message alert-validate
+    function submsg() {
+      var attemp = 0;
+      if (attemp == 0){
+          document.getElementById('text').disabled = true;
+          alert("Successfully entered Message");
+          window.open('mailto:mayankagrawal2911@gmail.com,pratikjain6720@gmail.com,?subject= Notice Alert &body='+document.getElementById('text').value);
+
+          documnet.getElementById('btn').disabled = true;
+
+      }
+  }
+
+function getbody() {
+	var body = document.getElementById('text').value;
+	return body;
+}  
+  // We enter Value in textbox it's goes to save in firebase database
+  
+  function SubmitClick() {
+      var firebaseRef = firebase.database().ref('Submit Message');
+      var messageText = text.value;
+      console.log(messageText);
+      firebaseRef.set(messageText);
+    var body = text.value;
+    
+	//	window.open('mailto:rushi91060@gmail.com,dhruminpatelhlr@gmail.com,pratikjain6720@gmail.com,shubhangkalkar1999@gmail.com,parth.chavda.129@gmail.com,mayankagrawal2911@gmail.com,ayushtalati79@gmail.com,rsondarva1.rs@gmail.com,?subject= Notice Alert &body='+document.getElementById('text').value);
+} 
+
+</script>   
+
+
+                </div>
+            </div>        
+        </div>
+	<style>
+
+/* Viewport */
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+		/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: Poppins-Regular, sans-serif;
+}
+
+/*---------------------------------------------*/
+a {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+  color: #57b846;
+}
+
+/*---------------------------------------------*/
+h1,h2,h3,h4,h5,h6 {
+	margin: 0px;
+}
+
+p {
+	font-family: Poppins-Regular;
+	font-size: 14px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+
+/*---------------------------------------------*/
+input {
+	outline: none;
+	border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder { color: #999999; }
+input:-moz-placeholder { color: #999999; }
+input::-moz-placeholder { color: #999999; }
+input:-ms-input-placeholder { color: #999999; }
+
+textarea::-webkit-input-placeholder { color: #999999; }
+textarea:-moz-placeholder { color: #999999; }
+textarea::-moz-placeholder { color: #999999; }
+textarea:-ms-input-placeholder { color: #999999; }
+
+/*---------------------------------------------*/
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+iframe {
+	border: none !important;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Utility ]*/
+.txt1 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #999999;
+}
+
+.txt2 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666666;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+  width: 100%;  
+  min-height: 100vh;
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  /*background: linear-gradient(-135deg,#fc00ff, #00dbde);*/
+	
+	
+  /*   Grandient live   */
+	background: linear-gradient(-45deg, rgb(226, 221, 219), #eef2f3, rgb(215, 228, 233), rgb(187, 197, 195) , #c0b6c4 ,#cbc4d6);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 5s ease infinite;
+	-moz-animation: Gradient 5s ease infinite;
+	animation: Gradient 5s ease infinite;
+
+}
+
+.container-login100 {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+.wrap-login100 {
+  width: 960px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 177px 130px 33px 95px;
+
+   /* background: linear-gradient(-135deg, #8e9eab, #eef2f3); */
+
+   /* grandient live */
+ background: linear-gradient(-45deg,  #8e9eab, #eef2f3, #b4c6cb, #96afb6);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+/*------------------------------------------------------------------
+[  ]*/
+.login100-pic {
+  width: 316px;
+}
+
+.login100-pic img {
+  max-width: 100%;
+}
+
+
+/*------------------------------------------------------------------
+[  ]*/
+.login100-form {
+  width: 290px;
+  margin-bottom: 140px;
+}
+
+.login100-form-title {
+  font-family: Comic Sans MS,bold;
+  font-size: 24px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+
+  width: 100%;
+  display: block;
+  padding-bottom: 54px;
+}
+
+
+/*---------------------------------------------*/
+.wrap-input100 {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+.input100 {
+  font-family: Comic Sans MS;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+
+  display: block;
+  width: 100%;
+  background: #c1c9d1;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+}
+
+.msg{
+    margin-bottom: 100px;
+    margin-left: 30px;
+    text-align: center;
+    
+}
+.message{
+  margin-left: 40px;
+    margin-bottom: 70px;
+}
+/*------------------------------------------------------------------
+[ Focus ]*/
+.focus-input100 {
+  display: block;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 0px 0px;
+  color: rgba(87,184,70, 0.8);
+}
+
+.input100:focus + .focus-input100 {
+  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+  animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+@-webkit-keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 70px 25px;
+    opacity: 0;
+  }
+}
+
+@keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 70px 25px;
+    opacity: 0;
+  }
+}
+
+.symbol-input100 {
+  font-size: 15px;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 35px;
+  pointer-events: none;
+  color: #666666;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100 + .symbol-input100 {
+  color: #57b846;
+  padding-left: 28px;
+}
+
+/*------------------------------------------------------------------
+[ Button ]*/
+.container-login100-form-btn {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.login100-form-btn {
+  font-family: Comic Sans MS;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: #57b846;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25px;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login100-form-btn:hover {
+  background: #333333;
+}
+
+
+
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+
+
+@media (max-width: 992px) {
+  .wrap-login100 {
+    padding: 177px 90px 33px 85px;
+  }
+
+  .login100-pic {
+    width: 35%;
+  }
+
+  .login100-form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap-login100 {
+    padding: 100px 80px 33px 80px;
+  }
+
+
+  .login100-pic {
+    display: none;
+  }
+
+  .login100-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap-login100 {
+    padding: 100px 15px 33px 15px;
+  }
+}
+
+
+/*------------------------------------------------------------------
+[ Alert validate ]*/
+
+.validate-input {
+  position: relative;
+}
+
+.alert-validate::before {
+  content: attr(data-validate);
+  position: absolute;
+  max-width: 70%;
+  background-color: white;
+  border: 1px solid #c80000;
+  border-radius: 13px;
+  padding: 4px 25px 4px 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  pointer-events: none;
+
+  font-family: Poppins-Medium;
+  color: #c80000;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+}
+
+.alert-validate::after {
+  content: "\f06a";
+  font-family: FontAwesome;
+  display: block;
+  position: absolute;
+  color: #c80000;
+  font-size: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 13px;
+}
+
+.alert-validate:hover:before {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (max-width: 992px) {
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+img:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+                                 /*     select tag effect      */
+
+/* The container must be positioned relative: */
+
+
+select#s1 {
+  border: 0px;
+  outline: 0px;
+      background: #c1c9d1;
+    color: #807478;
+    border: #2c343c;
+}
+#select-dep{
+  position: relative;
+  font-family: Comic Sans MS;
+}
+
+
+
+#select-selected {
+  background-color: DodgerBlue;
+}
+
+/* Style the arrow inside the select element: */
+#select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+#select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+#select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+#select-items {
+  border: 0px;
+  outline: 0px;
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+#select-hide {
+  display: none;
+}
+
+#select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+/*  Grandient live  */
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+select {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -webkit-padding-end: 20px;
+    -moz-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -moz-padding-start: 2px;
+    background-color: #F07575; /* fallback color if gradients are not supported */
+   
+    background-position: center right;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: #555;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+	</style>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+-------------------------------------IoT Base DisplayBoard-------------------------
+
+first we make a wesite..
+https://multidisplay-9d349.firebaseapp.com
+
+hosting our website in google firebase 
+
+
+hosting website command in cmd
+1)firebase init
+2)firebase deploy
+
+
+login password:
+email:-rushi91060@gmail.com
+pass:- rushipatel
+
+
+
+front page in our website is login auth people......
+after login it's ask select department 
+
+****************************************************
+IT department has IoTbaseNotice database in firebase
+CE department has testing-1 database in firebase
+****************************************************
+
+
+
